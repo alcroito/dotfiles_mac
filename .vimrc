@@ -24,7 +24,7 @@ set laststatus=2
 "filetype plugin indent on    " required
 
 
-"Search for strings with slashes, without escaping them
+"Search for strings with slashes, without escaping them, with :SS
 command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '\')
 
 " Plug plugins
@@ -50,6 +50,8 @@ Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' }
 Plug 'dietsche/vim-lastplace'
 " Ack / ag integration
 Plug 'mileszs/ack.vim'
+" ripgrep integration
+Plug 'jremmen/vim-ripgrep'
 " Fuzzy file finder
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -104,6 +106,11 @@ cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
 
+" Replace Ack with ripgrep
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
+
 " Use fuzzy file finder
 set rtp+=/usr/local/opt/fzf
 
@@ -112,10 +119,17 @@ colorscheme jellybeans
 
 " map fzf keybindings
 nmap ,t :Files<CR>
+nmap ,f :Files<CR>
 nmap ,b :Buffers<CR>
 
 " map ",cd" to changing directory to current open file
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+
+" map \s to update the save the current file if it was updated (simiarl to :w)
+nnoremap <Leader>s :update<cr>
+
+" map ,gb to Tig blame current file
+nnoremap ,gb :exe ':Tig blame '. @%<cr>
 
 " open nerdtree shortcut
 map ,n :NERDTreeToggle<CR>

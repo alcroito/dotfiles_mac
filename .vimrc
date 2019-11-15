@@ -61,11 +61,20 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 " Git integration
 Plug 'tpope/vim-fugitive'
+" qml syntax highlighting
+Plug 'peterhoeg/vim-qml'
+" Git gutter integration
+Plug 'airblade/vim-gitgutter'
+" Git a vim
+Plug 'jreybert/vimagit'
 " tig support
 if has('nvim')
     Plug 'codeindulgence/vim-tig'
     let g:tig_default_command = ''
 endif
+
+" Motion highlighting
+Plug 'easymotion/vim-easymotion'
 
 " Buffer explorer (similar to Ctrl+Tab in Qt Creator)
 set runtimepath^=~/.vim/bundle/buffet
@@ -131,6 +140,12 @@ nnoremap <Leader>s :update<cr>
 " map ,gb to Tig blame current file
 nnoremap ,gb :exe ':Tig blame '. @%<cr>
 
+" map ,gt to Tig
+nnoremap ,gt :exe ':Tig '<cr>
+
+" map ,gt to Tig diff
+nnoremap ,gd :exe ':Tig'<cr>d
+
 " open nerdtree shortcut
 map ,n :NERDTreeToggle<CR>
 
@@ -174,3 +189,6 @@ if has('nvim')
    tnoremap <Esc> <C-\><C-n>
    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 endif
+
+" Set updatetime to 1sec for git gutter plugin
+set updatetime=1000

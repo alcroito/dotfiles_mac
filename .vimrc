@@ -1,17 +1,40 @@
 " General settings
 set nocompatible              " be iMproved, required
+
+" Each time a new or existing file is edited, Vim will try to recognize the type
+" of the file and set the 'filetype' option.  This will trigger the FileType
+" event, which can be used to set the syntax highlighting, set options, etc.
+" TODO: Why is off required?
 filetype off                  " required
+
+" Enables syntax highlighting
 :syntax on
+
+" Enables ruler, but actually doesn't seem to do much when using neovim full
+" of plugins
 set ruler
-:set ignorecase
+
+" Ignore case when searching
+set ignorecase
+
+" Copy indent from current line when starting a new line
 "set autoindent
+
+" Do smart autoindenting when starting a new line. Works for C-like
+" programs
 "set smartindent
+
+" Always show status line
 set laststatus=2
+
+" Allow backspace removing whitespace in normal mode
 set backspace=indent,eol,start
+
+" TODO: Unclear
 "set statusline=%F "tail of the filename
 
 
-" Plug plugins
+" Initialize plugins
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
@@ -152,9 +175,6 @@ cnoreabbrev AG Ack
 if executable('rg')
   let g:ackprg = 'rg --vimgrep'
 endif
-
-" Use fuzzy file finder
-set rtp+=~/fzf/bin/fzf
 
 " Best colorscheme found
 colorscheme jellybeans

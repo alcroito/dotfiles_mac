@@ -1,3 +1,4 @@
+" General settings
 set nocompatible              " be iMproved, required
 filetype off                  " required
 :syntax on
@@ -6,80 +7,57 @@ set ruler
 "set autoindent
 "set smartindent
 set laststatus=2
+set backspace=indent,eol,start
 "set statusline=%F "tail of the filename
-" set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-"Plugin 'VundleVim/Vundle.vim'
-
-
-"Plugin 'Valloric/YouCompleteMe'
-
-" All of your Plugins must be added before the following line
-"call vundle#end()            " required
-"filetype plugin indent on    " required
-
-
-"Search for strings with slashes, without escaping them, with :SS
-command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '\')
 
 " Plug plugins
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
-" show file line I guess
+
+" Allow opening files with columns like main.txt:12
 Plug 'lervag/file-line'
-" cpp highlighting
-Plug 'octol/vim-cpp-enhanced-highlight'
+
 " comment out blocks of code
 Plug 'scrooloose/nerdcommenter'
-" gyp highlighting
-Plug 'kelan/gyp.vim'
-" gn highlighting
-Plug 'c0nk/vim-gn'
-" qbs highlighting
-Plug 'https://JohnKaul@bitbucket.org/JohnKaul/qbs.vim.git'
+
 " Not sure what this is for
 Plug 'nathanaelkane/vim-indent-guides'
+
 " colorscheme
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' }
+
 " Remember last cursor position
 Plug 'dietsche/vim-lastplace'
+
 " Ack / ag integration
 Plug 'mileszs/ack.vim'
+
 " ripgrep integration
 Plug 'jremmen/vim-ripgrep'
+
 " Fuzzy file finder
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+
 " File explorer
 Plug 'scrooloose/nerdtree'
+
 " Smart status bar
 Plug 'vim-airline/vim-airline'
+
 " Git integration
 Plug 'tpope/vim-fugitive'
-" nginx syntax highlighting
-Plug 'chr4/nginx.vim'
-" qmake syntax highlighting
-Plug 'artoj/qmake-syntax-vim'
-" qml syntax highlighting
-Plug 'peterhoeg/vim-qml'
+
 " Git gutter integration
 Plug 'airblade/vim-gitgutter'
+
 " Git a vim
 Plug 'jreybert/vimagit'
+
 " extend selection expand selection
 Plug 'terryma/vim-expand-region'
-" tig support
-if has('nvim')
-    Plug 'codeindulgence/vim-tig'
-    let g:tig_default_command = ''
-endif
-" Toml support
-Plug 'cespare/vim-toml'
+
 " Switch between header and source files with :A
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/alternate-lite'
@@ -88,27 +66,71 @@ Plug 'LucHermitte/alternate-lite'
 Plug 'easymotion/vim-easymotion'
 
 " Buffer explorer (similar to Ctrl+Tab in Qt Creator)
-set runtimepath^=~/.vim/bundle/buffet
+" Doesn't work atm
+" set runtimepath^=~/.vim/bundle/buffet
+
+
+" Syntax highlighters
+" Toml support
+Plug 'cespare/vim-toml', { 'branch': 'main' }
+
+" nginx syntax highlighting
+Plug 'chr4/nginx.vim'
+
+" qmake syntax highlighting
+Plug 'artoj/qmake-syntax-vim'
+
+" qml syntax highlighting
+Plug 'peterhoeg/vim-qml'
+
+" gyp highlighting
+Plug 'kelan/gyp.vim'
+
+" gn highlighting
+Plug 'c0nk/vim-gn'
+
+" qbs highlighting
+Plug 'https://JohnKaul@bitbucket.org/JohnKaul/qbs.vim.git'
+
+" cpp highlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+
+" tig support
+if has('nvim')
+    Plug 'codeindulgence/vim-tig'
+    let g:tig_default_command = ''
+endif
+
 
 " Initialize plugin system
 call plug#end()
 
+" vim-cpp-enhanced-highlight options
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let c_no_curly_error=1
 
+"Search for strings with slashes, without escaping them, with :SS
+command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '\')
+
 " Smart indent
 filetype plugin indent on
+
 " show existing tab with 4 spaces width
 set tabstop=4
+
 " " when indenting with '>', use 4 spaces width
 set shiftwidth=4
+
 " " On pressing tab, insert 4 spaces
 set expandtab
 
 " set qmake project files comment strings
 autocmd FileType qmake set commentstring=#\ %s
 
+" vim-indent-guides options
+" If not enabled on startup, use :IndentGuidesToggle to enable
 "let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -146,7 +168,7 @@ nmap <C-P> :Files<CR>
 " map ",cd" to changing directory to current open file
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
-" map \s to update the save the current file if it was updated (simiarl to :w)
+" map \s to update the save the current file if it was updated (simiar to :w)
 nnoremap <Leader>s :update<cr>
 
 " map ,gb to Tig blame current file
@@ -185,20 +207,20 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
-" Alt Tab switching between buffers.
-noremap <F10> :Bufferlistsw<CR>
-noremap <F11> :Bufferlistsw<CR>kk
+" Alt Tab switching between buffers, using Buffet plugin.
+" noremap <F10> :Bufferlistsw<CR>
+" noremap <F11> :Bufferlistsw<CR>kk
 
 " Maps Ctrl F10 and Ctrl F11 to switch buffers. iTerm2 is configured to send
 " that when pressing Alt-Tab and Alt-Shift-Tab.
-augroup BuffetAdd
-   if !exists("g:BuffetAdded")
-      let g:BuffetAdded = 1
-      au BufWinEnter buflisttempbuffer* map <buffer> <Tab> <CR>
-      au BufWinEnter buflisttempbuffer* map <buffer> <Esc>[21~   j
-      au BufWinEnter buflisttempbuffer* map <buffer> <Esc>[23~ k
-   endif
-augroup END
+"augroup BuffetAdd
+   "if !exists("g:BuffetAdded")
+      "let g:BuffetAdded = 1
+      "au BufWinEnter buflisttempbuffer* map <buffer> <Tab> <CR>
+      "au BufWinEnter buflisttempbuffer* map <buffer> <Esc>[21~   j
+      "au BufWinEnter buflisttempbuffer* map <buffer> <Esc>[23~ k
+   "endif
+"augroup END
 
 " Enable mappings for terminal
 if has('nvim')

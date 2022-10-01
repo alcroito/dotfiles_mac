@@ -53,7 +53,7 @@ Plug 'mileszs/ack.vim'
 " ripgrep integration
 Plug 'jremmen/vim-ripgrep'
 " Fuzzy file finder
-Plug '/usr/local/opt/fzf'
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 " File explorer
 Plug 'scrooloose/nerdtree'
@@ -61,16 +61,32 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 " Git integration
 Plug 'tpope/vim-fugitive'
+" nginx syntax highlighting
+Plug 'chr4/nginx.vim'
 " qmake syntax highlighting
 Plug 'artoj/qmake-syntax-vim'
+" qml syntax highlighting
+Plug 'peterhoeg/vim-qml'
+" Git gutter integration
+Plug 'airblade/vim-gitgutter'
+" Git a vim
+Plug 'jreybert/vimagit'
+" extend selection expand selection
+Plug 'terryma/vim-expand-region'
 " tig support
 if has('nvim')
     Plug 'codeindulgence/vim-tig'
     let g:tig_default_command = ''
 endif
+" Toml support
+Plug 'cespare/vim-toml'
 " Switch between header and source files with :A
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/alternate-lite'
+
+" Motion highlighting
+Plug 'easymotion/vim-easymotion'
+
 " Buffer explorer (similar to Ctrl+Tab in Qt Creator)
 set runtimepath^=~/.vim/bundle/buffet
 
@@ -116,7 +132,7 @@ if executable('rg')
 endif
 
 " Use fuzzy file finder
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/fzf/bin/fzf
 
 " Best colorscheme found
 colorscheme jellybeans
@@ -125,6 +141,7 @@ colorscheme jellybeans
 nmap ,t :Files<CR>
 nmap ,f :Files<CR>
 nmap ,b :Buffers<CR>
+nmap <C-P> :Files<CR>
 
 " map ",cd" to changing directory to current open file
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
@@ -135,12 +152,20 @@ nnoremap <Leader>s :update<cr>
 " map ,gb to Tig blame current file
 nnoremap ,gb :exe ':Tig blame '. @%<cr>
 
+" map ,gt to Tig
+nnoremap ,gt :exe ':Tig '<cr>
+
+" map ,gt to Tig diff
+nnoremap ,gd :exe ':Tig'<cr>d
+
 " open nerdtree shortcut
 map ,n :NERDTreeToggle<CR>
+map ,m :NERDTreeFind<CR>
 
 " Type :e %%/filename to edit file in same dir as currently opened file
 cabbr <expr> %% expand('%:p:h')
 
+" replace selection with paste, without changing default register content
 vnoremap <space>p "_dP
 
 " Highlight trailing whitespace
@@ -180,3 +205,23 @@ if has('nvim')
    tnoremap <Esc> <C-\><C-n>
    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 endif
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+" cmap w!! w !sudo tee > /dev/null %
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
+" Set updatetime to 1sec for git gutter plugin
+set updatetime=1000
+
+" Set text width to 71 chars for git commit message editing
+au FileType gitcommit setlocal tw=70
+
+" Open Nerdtree when editing a directory
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+" Don't use nerdtree when editing a dir directlry, use netrw instead
+let NERDTreeHijackNetrw = 0
+
+" Spellchecking git commit messages
+autocmd FileType gitcommit setlocal spell

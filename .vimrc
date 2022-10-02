@@ -82,7 +82,7 @@ Plug 'airblade/vim-gitgutter'
 " Git a vim
 Plug 'jreybert/vimagit'
 
-" extend selection expand selection
+" extend selection expand selection + and _
 Plug 'terryma/vim-expand-region'
 
 " Switch between header and source files with :A

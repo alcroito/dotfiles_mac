@@ -74,7 +74,7 @@ Plug 'lervag/file-line'
 " comment out blocks of code
 Plug 'scrooloose/nerdcommenter'
 
-" Not sure what this is for
+" Show indentation levels of code
 Plug 'nathanaelkane/vim-indent-guides'
 
 " colorscheme

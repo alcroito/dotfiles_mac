@@ -133,12 +133,29 @@ if has('nvim')
     let g:tig_default_command = ''
 endif
 
+" Telescope fzf like replacement
+if has('nvim')
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+endif
+
+" Install treesitter for telescope
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 
 " Initialize plugin system
 call plug#end()
 
 " Use surround.vim keymap for vim-sandwhich, to not override default motions
 runtime macros/sandwich/keymap/surround.vim
+
+
+" Telescope fzf c faster impl
+if has('nvim')
+    lua require('telescope').load_extension('fzf')
+endif
 
 " vim-cpp-enhanced-highlight options
 let g:cpp_class_scope_highlight = 1
@@ -198,6 +215,12 @@ nmap ,t :Files<CR>
 nmap ,f :Files<CR>
 nmap ,b :Buffers<CR>
 nmap <C-P> :Files<CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " map ",cd" to changing directory to current open file
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>

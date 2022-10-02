@@ -188,6 +188,15 @@ if has('nvim')
     Plug 'lukas-reineke/indent-blankline.nvim'
 endif
 
+
+" Live preview of :global + :substitute
+"if has('nvim')
+    "Plug 'chentoast/live.nvim'
+"endif
+
+" Live preview of :global + :substitute v2
+"Plug 'markonm/traces.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -200,13 +209,21 @@ if has('nvim')
     lua require('telescope').load_extension('fzf')
 endif
 
+" Enable gradual undo
 "if has('nvim')
     "lua require('gradual-undo').setup()
 "endif
 
+" Enable indentation highlighting
 if has('nvim')
     lua require("indent_blankline").setup()
 endif
+
+" Enable live preview of :global command
+" Doesn't work for nested :subs
+"if has('nvim')
+    "lua require("live").setup()
+"endif
 
 " vim-cpp-enhanced-highlight options
 let g:cpp_class_scope_highlight = 1

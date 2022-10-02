@@ -75,7 +75,7 @@ Plug 'lervag/file-line'
 Plug 'scrooloose/nerdcommenter'
 
 " Show indentation levels of code
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 
 " colorscheme
 Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.6' }
@@ -178,8 +178,14 @@ endif
 
 " Do gradgual undos with u, where first cursor goes to where the change will
 " happen, and only second u will undo, like in other IDEs.
+" Somehow breaks undo sometimes
+"if has('nvim')
+    "Plug 'EtiamNullam/gradual-undo.nvim'
+"endif
+
+" Show indentation levels better
 if has('nvim')
-    Plug 'EtiamNullam/gradual-undo.nvim'
+    Plug 'lukas-reineke/indent-blankline.nvim'
 endif
 
 " Initialize plugin system
@@ -194,8 +200,12 @@ if has('nvim')
     lua require('telescope').load_extension('fzf')
 endif
 
+"if has('nvim')
+    "lua require('gradual-undo').setup()
+"endif
+
 if has('nvim')
-    lua require('gradual-undo').setup()
+    lua require("indent_blankline").setup()
 endif
 
 " vim-cpp-enhanced-highlight options
@@ -224,8 +234,8 @@ autocmd FileType qmake set commentstring=#\ %s
 " vim-indent-guides options
 " If not enabled on startup, use :IndentGuidesToggle to enable
 "let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+"let g:indent_guides_start_level = 2
+"let g:indent_guides_guide_size = 1
 
 " save undo history for documents
 if has('persistent_undo')      "check if your vim version supports it

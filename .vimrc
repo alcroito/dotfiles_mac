@@ -85,6 +85,10 @@ Plug 'jreybert/vimagit'
 " extend selection expand selection + and _
 Plug 'terryma/vim-expand-region'
 
+" Additional text-objects for viw like commands
+"Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
+
 " Switch between header and source files with :A
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/alternate-lite'
@@ -132,6 +136,9 @@ endif
 
 " Initialize plugin system
 call plug#end()
+
+" Use surround.vim keymap for vim-sandwhich, to not override default motions
+runtime macros/sandwich/keymap/surround.vim
 
 " vim-cpp-enhanced-highlight options
 let g:cpp_class_scope_highlight = 1

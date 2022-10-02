@@ -30,6 +30,10 @@ set laststatus=2
 " Allow backspace removing whitespace in normal mode
 set backspace=indent,eol,start
 
+" Enable relative line numbers hybrid with absolute
+set number
+set relativenumber
+
 " TODO: Unclear
 "set statusline=%F "tail of the filename
 

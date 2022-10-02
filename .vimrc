@@ -190,6 +190,9 @@ endif
 " Best colorscheme found
 colorscheme jellybeans
 
+" map leader to space
+map <SPACE> <leader>
+
 " map fzf keybindings
 nmap ,t :Files<CR>
 nmap ,f :Files<CR>

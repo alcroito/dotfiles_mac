@@ -129,6 +129,9 @@ Plug 'easymotion/vim-easymotion'
 " Visualize undo tree
 Plug 'mbbill/undotree'
 
+" Indentation level text objects
+Plug 'michaeljsmith/vim-indent-object'
+
 " Syntax highlighters
 " Toml support
 Plug 'cespare/vim-toml', { 'branch': 'main' }
@@ -284,6 +287,10 @@ cabbr <expr> %% expand('%:p:h')
 
 " replace selection with paste, without changing default register content
 vnoremap <space>p "_dP
+
+" text object to select a line
+xnoremap <silent> il :<c-u>normal! g_v^<cr>
+onoremap <silent> il :<c-u>normal! g_v^<cr>
 
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red

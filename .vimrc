@@ -126,6 +126,8 @@ Plug 'easymotion/vim-easymotion'
 " Doesn't work atm
 " set runtimepath^=~/.vim/bundle/buffet
 
+" Visualize undo tree
+Plug 'mbbill/undotree'
 
 " Syntax highlighters
 " Toml support
@@ -171,6 +173,12 @@ if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
+" Do gradgual undos with u, where first cursor goes to where the change will
+" happen, and only second u will undo, like in other IDEs.
+if has('nvim')
+    Plug 'EtiamNullam/gradual-undo.nvim'
+endif
+
 " Initialize plugin system
 call plug#end()
 
@@ -181,6 +189,10 @@ runtime macros/sandwich/keymap/surround.vim
 " Telescope fzf c faster impl
 if has('nvim')
     lua require('telescope').load_extension('fzf')
+endif
+
+if has('nvim')
+    lua require('gradual-undo').setup()
 endif
 
 " vim-cpp-enhanced-highlight options

@@ -206,7 +206,7 @@ runtime macros/sandwich/keymap/surround.vim
 
 " Telescope fzf c faster impl
 if has('nvim')
-    lua require('telescope').load_extension('fzf')
+    lua if jit ~= nil then require('telescope').load_extension('fzf') end
 endif
 
 " Enable gradual undo

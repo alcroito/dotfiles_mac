@@ -245,6 +245,9 @@ set shiftwidth=4
 " " On pressing tab, insert 4 spaces
 set expandtab
 
+" Disable mouse visual select
+set mouse=
+
 " set qmake project files comment strings
 autocmd FileType qmake set commentstring=#\ %s
 

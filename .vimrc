@@ -294,6 +294,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>Telescope treesitter<cr>
 nnoremap <leader>fc <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <leader>fp <cmd>Telescope <cr>
 
 " map ",cd" to changing directory to current open file
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>

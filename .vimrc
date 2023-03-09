@@ -122,6 +122,9 @@ Plug 'LucHermitte/alternate-lite'
 " Motion highlighting
 Plug 'easymotion/vim-easymotion'
 
+" Alternative trying out
+" Plug 'rlane/pounce.nvim'
+
 " Buffer explorer (similar to Ctrl+Tab in Qt Creator)
 " Doesn't work atm
 " set runtimepath^=~/.vim/bundle/buffet
@@ -169,6 +172,9 @@ if has('nvim')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
+    " for git mergetool
+    " Plug 'sindrets/diffview.nvim'
 endif
 
 " Install treesitter for telescope
@@ -186,6 +192,11 @@ endif
 " Show indentation levels better
 if has('nvim')
     Plug 'lukas-reineke/indent-blankline.nvim'
+endif
+
+" vim keybindings popup guide
+if has('nvim')
+    Plug 'folke/which-key.nvim'
 endif
 
 
@@ -209,6 +220,11 @@ if has('nvim')
     lua if jit ~= nil then require('telescope').load_extension('fzf') end
 endif
 
+" Telescope which key help guide popup show
+"if has('nvim')
+    "lua require('telescope').setup{} end
+"endif
+
 " Enable gradual undo
 "if has('nvim')
     "lua require('gradual-undo').setup()
@@ -217,6 +233,11 @@ endif
 " Enable indentation highlighting
 if has('nvim')
     lua require("indent_blankline").setup()
+endif
+
+" which key settings
+if has('nvim')
+    lua require("which-key").setup {}
 endif
 
 " Enable live preview of :global command

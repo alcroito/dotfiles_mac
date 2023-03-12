@@ -135,6 +135,10 @@ Plug 'mbbill/undotree'
 " Indentation level text objects
 Plug 'michaeljsmith/vim-indent-object'
 
+" Set indent space or tabs based on file contents
+Plug 'tpope/vim-sleuth'
+
+
 " Syntax highlighters
 " Toml support
 Plug 'cespare/vim-toml', { 'branch': 'main' }
@@ -258,10 +262,10 @@ command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '\')
 filetype plugin indent on
 
 " show existing tab with 4 spaces width
-set tabstop=4
+"set tabstop=4
 
 " " when indenting with '>', use 4 spaces width
-set shiftwidth=4
+"set shiftwidth=4
 
 " " On pressing tab, insert 4 spaces
 set expandtab

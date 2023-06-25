@@ -224,6 +224,11 @@ if has('nvim')
     lua if jit ~= nil then require('telescope').load_extension('fzf') end
 endif
 
+" Bind ; to reopen latest telescope window
+if has('nvim')
+   lua vim.keymap.set("n", ";", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>", opts)
+endif
+
 " Telescope which key help guide popup show
 "if has('nvim')
     "lua require('telescope').setup{} end

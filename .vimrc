@@ -200,12 +200,12 @@ endif
 
 " vim keybindings popup guide
 if has('nvim')
-    Plug 'folke/which-key.nvim'
+    Plug 'folke/which-key.nvim', { 'branch': 'main' }
 endif
 
 " Copilot
 if has('nvim')
-    Plug 'github/copilot.vim'
+    Plug 'github/copilot.vim', { 'branch': 'release' }
 endif
 
 " Live preview of :global + :substitute

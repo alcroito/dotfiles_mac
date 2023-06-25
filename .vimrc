@@ -203,6 +203,10 @@ if has('nvim')
     Plug 'folke/which-key.nvim'
 endif
 
+" Copilot
+if has('nvim')
+    Plug 'github/copilot.vim'
+endif
 
 " Live preview of :global + :substitute
 "if has('nvim')

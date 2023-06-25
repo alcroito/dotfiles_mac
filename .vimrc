@@ -90,7 +90,7 @@ Plug 'mileszs/ack.vim'
 Plug 'jremmen/vim-ripgrep'
 
 " Fuzzy file finder
-Plug '~/.fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " File explorer

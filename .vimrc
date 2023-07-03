@@ -234,7 +234,7 @@ endif
 call plug#end()
 
 " Use surround.vim keymap for vim-sandwhich, to not override default motions
-runtime macros/sandwich/keymap/surround.vim
+"runtime macros/sandwich/keymap/surround.vim
 
 
 " Telescope fzf c faster impl

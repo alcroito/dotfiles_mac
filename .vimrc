@@ -111,6 +111,9 @@ Plug 'airblade/vim-gitgutter'
 " Git a vim
 Plug 'jreybert/vimagit'
 
+" Lua helpers for neogit
+Plug 'nvim-lua/plenary.nvim'
+
 " extend selection expand selection + and _
 Plug 'terryma/vim-expand-region'
 
@@ -182,7 +185,15 @@ if has('nvim')
 
     " for git mergetool
     " Plug 'sindrets/diffview.nvim'
+
+    " Magit git like experience
+    Plug 'TimUntersberger/neogit'
+    "Plug 'CKolkey/neogit'
+
+    " Lazygit
+    Plug 'kdheepak/lazygit.nvim'
 endif
+
 
 " Install treesitter for telescope
 if has('nvim')

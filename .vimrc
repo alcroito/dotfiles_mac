@@ -242,9 +242,9 @@ if has('nvim')
     lua if jit ~= nil then require('telescope').load_extension('fzf') end
 endif
 
-" Bind ; to reopen latest telescope window
+" Bind <leader>; to reopen latest telescope window
 if has('nvim')
-   lua vim.keymap.set("n", ";", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>", opts)
+   lua vim.keymap.set("n", "<leader>;", "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>", opts)
 endif
 
 " Telescope which key help guide popup show
@@ -330,40 +330,46 @@ colorscheme jellybeans
 map <SPACE> <leader>
 
 " map fzf keybindings
-nmap ,t :Files<CR>
-nmap ,f :Files<CR>
-nmap ,b :Buffers<CR>
+nmap <leader>zt :Files<CR>
+nmap <leader>zf :Files<CR>
+nmap <leader>zb :Buffers<CR>
 nmap <C-P> :Files<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <C-[> <cmd>Telescope live_grep<cr>
+"nnoremap <C-[> <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <C-]> <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>ft <cmd>Telescope treesitter<cr>
+nnoremap <leader>fs <cmd>Telescope treesitter<cr>
 nnoremap <leader>fc <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <leader>fp <cmd>Telescope <cr>
+nnoremap <leader>ft <cmd>Telescope <cr>
 
-" map ",cd" to changing directory to current open file
-nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+" Trigger lazygit
+nnoremap <silent> <leader>gg :LazyGit<CR>
+
+" Trigger neogit
+nnoremap <silent> <leader>ng :Neogit<CR>
+
+" map "leader cd" to changing directory to current open file
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " map \s to update the save the current file if it was updated (simiar to :w)
 nnoremap <Leader>s :update<cr>
 
 " map ,gb to Tig blame current file
-nnoremap ,gb :exe ':Tig blame '. @%<cr>
+nnoremap <leader>gb :exe ':Tig blame '. @%<cr>
 
 " map ,gt to Tig
-nnoremap ,gt :exe ':Tig '<cr>
+nnoremap <leader>gt :exe ':Tig '<cr>
 
 " map ,gt to Tig diff
-nnoremap ,gd :exe ':Tig'<cr>d
+nnoremap <leader>gd :exe ':Tig'<cr>d
 
 " open nerdtree shortcut
-map ,n :NERDTreeToggle<CR>
-map ,m :NERDTreeFind<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>m :NERDTreeFind<CR>
 
 " Type :e %%/filename to edit file in same dir as currently opened file
 cabbr <expr> %% expand('%:p:h')

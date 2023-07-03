@@ -34,6 +34,9 @@ set backspace=indent,eol,start
 set number
 set relativenumber
 
+" Show right-side column count margins
+set colorcolumn=72,80,100
+
 " TODO: Unclear
 "set statusline=%F "tail of the filename
 

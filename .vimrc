@@ -183,6 +183,9 @@ if has('nvim')
     Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': ':split term://cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
+    " Show recently open files
+    Plug 'smartpde/telescope-recent-files', { 'branch': 'main'}
+
     " for git mergetool
     " Plug 'sindrets/diffview.nvim'
 
@@ -277,6 +280,12 @@ if has('nvim')
     " Enables regular search jump labels and f,t motions
     lua require("flash").setup {}
     lua vim.keymap.set({"n", "x", "o"}, "<leader>w", "<cmd>lua require('flash').jump()<cr>", opts)
+endif
+
+if has ('nvim')
+    " Load telescope recent files and set binding
+    lua require("telescope").load_extension("recent_files")
+    lua vim.keymap.set("n", "<leader>r", "<cmd>lua require('telescope').extensions.recent_files.pick()<cr>", opts)
 endif
 
 " Enable live preview of :global command

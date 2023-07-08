@@ -191,7 +191,7 @@ if has('nvim')
     "Plug 'CKolkey/neogit'
 
     " Lazygit
-    Plug 'kdheepak/lazygit.nvim'
+    Plug 'kdheepak/lazygit.nvim', { 'branch': 'main' }
 endif
 
 

@@ -222,6 +222,11 @@ if has('nvim')
     Plug 'github/copilot.vim', { 'branch': 'release' }
 endif
 
+if has('nvim')
+    " Like easy motion
+    Plug 'folke/flash.nvim', { 'branch': 'main' }
+endif
+
 " Live preview of :global + :substitute
 "if has('nvim')
     "Plug 'chentoast/live.nvim'
@@ -265,6 +270,13 @@ endif
 " which key settings
 if has('nvim')
     lua require("which-key").setup {}
+endif
+
+" Bindings for easymotion flash movement
+if has('nvim')
+    " Enables regular search jump labels and f,t motions
+    lua require("flash").setup {}
+    lua vim.keymap.set({"n", "x", "o"}, "<leader>w", "<cmd>lua require('flash').jump()<cr>", opts)
 endif
 
 " Enable live preview of :global command

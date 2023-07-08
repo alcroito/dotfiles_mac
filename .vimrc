@@ -389,7 +389,7 @@ nnoremap <leader>gt :exe ':Tig '<cr>
 nnoremap <leader>gd :exe ':Tig'<cr>d
 
 " open nerdtree shortcut
-map <leader>n :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 map <leader>m :NERDTreeFind<CR>
 
 " Type :e %%/filename to edit file in same dir as currently opened file

@@ -231,6 +231,11 @@ if has('nvim')
     Plug 'folke/flash.nvim', { 'branch': 'main' }
 endif
 
+if has('nvim')
+    " Use zoxide directory recency jumping
+    Plug 'nanotee/zoxide.vim'
+endif
+
 " Live preview of :global + :substitute
 "if has('nvim')
     "Plug 'chentoast/live.nvim'
@@ -397,6 +402,9 @@ nnoremap <leader>gd :exe ':Tig'<cr>d
 map <leader>tt :NERDTreeToggle<CR>
 map <leader>tm :NERDTreeFind<CR>
 map <leader>tc :NERDTreeCWD<CR>
+
+" Open zoxide fzf jump
+map <leader>o :Zi<CR>
 
 " Type :e %%/filename to edit file in same dir as currently opened file
 cabbr <expr> %% expand('%:p:h')

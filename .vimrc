@@ -190,7 +190,8 @@ if has('nvim')
     " Plug 'sindrets/diffview.nvim'
 
     " Magit git like experience
-    Plug 'TimUntersberger/neogit'
+    "Plug 'TimUntersberger/neogit'
+    Plug 'NeogitOrg/neogit'
     "Plug 'CKolkey/neogit'
 
     " Lazygit
@@ -286,6 +287,10 @@ if has ('nvim')
     " Load telescope recent files and set binding
     lua require("telescope").load_extension("recent_files")
     lua vim.keymap.set("n", "<leader>r", "<cmd>lua require('telescope').extensions.recent_files.pick()<cr>", opts)
+endif
+
+if has('nvim')
+    lua require("neogit").setup()
 endif
 
 " Enable live preview of :global command

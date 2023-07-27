@@ -278,7 +278,7 @@ endif
 " Bindings for easymotion flash movement
 if has('nvim')
     " Enables regular search jump labels and f,t motions
-    lua require("flash").setup {}
+    lua require("flash").setup { modes = {search = {enabled = false}}}
     lua vim.keymap.set({"n", "x", "o"}, "<leader>w", "<cmd>lua require('flash').jump()<cr>", opts)
 endif
 

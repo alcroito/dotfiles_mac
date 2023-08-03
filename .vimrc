@@ -294,7 +294,9 @@ if has ('nvim')
     lua vim.keymap.set("n", "<leader>r", "<cmd>lua require('telescope').extensions.recent_files.pick()<cr>", opts)
 endif
 
-if has('nvim')
+" Startup error shown with nvim <= 0.8
+" lua/neogit/lib/hl.lua:40: attempt to call field 'nvim_get_hl' (a nil value)
+if has('nvim-0.9')
     lua require("neogit").setup()
 endif
 

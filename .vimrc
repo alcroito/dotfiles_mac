@@ -170,6 +170,9 @@ Plug 'https://JohnKaul@bitbucket.org/JohnKaul/qbs.vim.git'
 " cpp highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+" toggle boolean support
+Plug 'AndrewRadev/switch.vim'
+Plug 'gerazov/vim-toggle-bool'
 
 " tig support
 if has('nvim')
@@ -378,6 +381,9 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs <cmd>Telescope treesitter<cr>
 nnoremap <leader>fc <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>ft <cmd>Telescope <cr>
+
+" Trigger toggle bool
+nnoremap <Leader>tb :ToggleBool<CR>
 
 " Trigger lazygit
 nnoremap <silent> <leader>gg :LazyGit<CR>

@@ -397,8 +397,11 @@ nnoremap <leader>gb :exe ':Tig blame '. @%<cr>
 " map ,gt to Tig
 nnoremap <leader>gt :exe ':Tig '<cr>
 
-" map ,gt to Tig diff
+" map ,gd to Tig diff
 nnoremap <leader>gd :exe ':Tig'<cr>d
+
+" map ,gc to Tig current buffer file path
+nnoremap <leader>gc :exe ':Tig' fnamemodify(bufname(1), ':p') <cr>
 
 " open nerdtree shortcut
 map <leader>tt :NERDTreeToggle<CR>

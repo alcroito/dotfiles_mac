@@ -239,6 +239,16 @@ if has('nvim')
     Plug 'nanotee/zoxide.vim'
 endif
 
+if has('nvim')
+    " ai auto complete
+    "Plug 'hrsh7th/nvim-cmp'
+    "Plug 'jcdickinson/codeium.nvim'
+
+    " Better habits
+    "Plug 'MunifTanjim/nui.nvim'
+    "Plug 'm4xshen/hardtime.nvim'
+endif
+
 " Live preview of :global + :substitute
 "if has('nvim')
     "Plug 'chentoast/live.nvim'
@@ -301,6 +311,15 @@ endif
 " lua/neogit/lib/hl.lua:40: attempt to call field 'nvim_get_hl' (a nil value)
 if has('nvim-0.9')
     lua require("neogit").setup()
+endif
+
+if has ('nvim')
+    " Load codium
+    "lua require("codeium").setup({})
+    "lua require("cmp").setup({ sources =   { name = "codeium" }  })
+
+    " Better habits
+    "lua require("hardtime").setup()
 endif
 
 " Enable live preview of :global command

@@ -276,7 +276,7 @@ endif
 
 " Enable indentation highlighting
 if has('nvim')
-    lua require("indent_blankline").setup()
+    lua require("ibl").setup()
 endif
 
 " which key settings
